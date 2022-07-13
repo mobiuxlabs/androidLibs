@@ -1,4 +1,3 @@
 rootProject.name = "Apps"
 include ':app'
 include ':CommonLibs'
-include ':reader'
