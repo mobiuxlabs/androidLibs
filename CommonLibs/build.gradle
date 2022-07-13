@@ -46,7 +46,7 @@ afterEvaluate {
 
                 groupId = 'com.github.mobiuxlabs'
                 artifactId = 'androidCommonLibs'
-                version = 'v1.0'
+                version = 'v1.12'
             }
         }
     }
