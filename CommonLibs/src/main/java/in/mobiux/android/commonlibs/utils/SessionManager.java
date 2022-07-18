@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 public class SessionManager {
 
@@ -14,6 +15,7 @@ public class SessionManager {
     private SharedPreferences preferences;
     private static SessionManager INSTANCE;
     private String appName = "";
+    private String deviceId = "";
 
     private SessionManager(Context context) {
         this.context = context;
@@ -90,5 +92,21 @@ public class SessionManager {
 
     public float getFloatValue(String key) {
         return preferences.getFloat(key, 0);
+    }
+
+    public String deviceId() {
+        deviceId = preferences.getString("deviceId", "");
+        if (deviceId.isEmpty()) {
+            deviceId = UUID.randomUUID().toString();
+            saveDeviceId(deviceId);
+        }
+
+        return deviceId;
+    }
+
+    private void saveDeviceId(String deviceId) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("deviceId", deviceId);
+        editor.apply();
     }
 }

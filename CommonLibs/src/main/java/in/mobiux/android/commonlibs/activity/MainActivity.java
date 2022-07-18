@@ -1,10 +1,10 @@
-package in.mobiux.android.apps;
-
-import androidx.appcompat.app.AppCompatActivity;
+package in.mobiux.android.commonlibs.activity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import in.mobiux.android.commonlibs.R;
+
+public class MainActivity extends AppActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
