@@ -28,7 +28,7 @@ public class AppActivity extends AppCompatActivity {
         sessionManager = SessionManager.getInstance(this);
         logger = AppLogger.getInstance();
         app.addActivity(this);
-        LanguageUtils.getInstance(this).setAppLanguage(AppActivity.this);
+//        LanguageUtils.getInstance(this).setAppLanguage(AppActivity.this);
     }
 
     @Override
