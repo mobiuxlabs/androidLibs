@@ -1,6 +1,5 @@
 package in.mobiux.android.commonlibs.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -8,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import in.mobiux.android.commonlibs.utils.App;
 import in.mobiux.android.commonlibs.utils.AppLogger;
-import in.mobiux.android.commonlibs.utils.LanguageUtils;
 import in.mobiux.android.commonlibs.utils.SessionManager;
 
 public class AppActivity extends AppCompatActivity {
@@ -22,7 +20,6 @@ public class AppActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_app);
 
         app = (App) getApplicationContext();
         sessionManager = SessionManager.getInstance(this);
@@ -37,7 +34,6 @@ public class AppActivity extends AppCompatActivity {
         app.removeActivity(this);
     }
 
-
     protected void launchActivity(Class<?> cls){
         Intent intent = new Intent(this, cls);
         startActivity(intent);
@@ -46,7 +42,4 @@ public class AppActivity extends AppCompatActivity {
     protected SessionManager getSessionManager() {
         return sessionManager;
     }
-
-
-
 }

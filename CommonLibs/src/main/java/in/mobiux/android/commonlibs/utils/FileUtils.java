@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Environment;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
@@ -23,10 +24,17 @@ public class FileUtils {
     private String fileName = "logs.txt";
     //    it's in KB
     private final long MAX_FILE_SIZE_LOG = 2;
-    private String fileDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).getPath();
+    //    private String fileDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).getPath();
+    private static String fileDirectory = "";
 
     private FileWriter writer;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+
+    //    the file will be created in Android>data>app package >files>documents
+//    this will not required any runtime permission for storage
+    public static void init(Context context) {
+        fileDirectory = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS).getPath();
+    }
 
     public void writeToFile(String fileName, String string) {
 
@@ -53,9 +61,12 @@ public class FileUtils {
     public void log(String string) {
 
         try {
+            Log.i(TAG, string);
             writer = new FileWriter(getLogFileName(), true);
             writer.write(string + "\t" + dateFormat.format(Calendar.getInstance().getTime()) + "\n");
             writer.close();
+
+            Log.i(TAG, "writing to logs.txt " + getLogFileName());
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -63,7 +74,6 @@ public class FileUtils {
     }
 
     public String getLogFileName() {
-
         try {
             logFileNameCurrent = (fileDirectory + "/logs" + "_" + Calendar.getInstance().get(Calendar.YEAR) + Calendar.getInstance().get(Calendar.DAY_OF_YEAR) + ".txt");
         } catch (Exception e) {
