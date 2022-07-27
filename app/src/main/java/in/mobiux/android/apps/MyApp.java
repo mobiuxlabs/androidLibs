@@ -6,7 +6,7 @@ import in.mobiux.android.commonlibs.utils.App;
 
 
 
-public class MyApp extends Application {
+public class MyApp extends App {
 
     @Override
     public void onCreate() {
