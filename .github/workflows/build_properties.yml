@@ -1,0 +1,4 @@
+#Building Artifacts
+
+- name: Build Release AAB
+  run: ./gradlew app:bundleRelease
